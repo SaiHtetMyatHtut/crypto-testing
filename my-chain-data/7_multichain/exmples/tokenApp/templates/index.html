@@ -1,0 +1,68 @@
+<html>
+<body>
+<h3>Prepare</h3>
+<a href="/prepare">Prepare</a> <br/>
+Create 'encaddr' stream. <br/>
+Admin address was already exist.
+Generate admin password and publish to 'encaddr'.<br/>
+Subscribe 'encaddr'. <br/>
+Return address and pwd of admin. <br/>
+<p/>
+
+<a href="/listaddr">List Addresses</a>
+<p/>
+
+<a href="/liststream">List Streams</a>
+<p/>
+
+<a href="/listperm">List Permissions</a>
+<p/>
+
+-----------------------------------------------<p/>
+
+<a href="/regacc">Register Account</a> <br/>
+Create address and password. <br/>
+Encode the address with password resulting 'enc'. <br/>
+Publish address and 'enc' to 'encaddr'. <br/>
+Grant 'send,receive' permission to the address. <br/>
+Return address and pwd of the account.<br/>
+<p/>
+
+<b>Verify Address</b><br/>
+<form action="/verifyaddrpwd" method="POST">
+Address <input type="text" name="addr"/><p/>
+Password <input type="text" name="pwd"/>
+<input type="submit" value="Verify"/>
+</form>
+<p/><hr/>
+
+<h3>Issue</h3>
+<form action="/issue" method="POST">
+Admin Password <input type="text" name="pwd"/><p/>
+To Address <input type="text" name="addr"/><p/>
+Asset <input type="text" name="asset"/><p/>
+Amount <input type="text" name="amount"/> 
+<input type="submit" value="Issue"/>
+</form>
+<p/><hr/>
+
+<h3>Send</h3>
+<form action="/sendfrom" method="POST">
+Password <input type="text" name="pwd"/><p/>
+From Address <input type="text" name="add1"/><p/>
+To Address <input type="text" name="add2"/><p/>
+Asset <input type="text" name="asset"/><p/>
+Amount <input type="text" name="amount"/> 
+<input type="submit" value="Send"/>
+</form>
+<p/><hr>
+
+<h3>Check Balance</h3>
+<form action="/addrbal" method="POST">
+Address <input type="text" name="addr"/><p/>
+Password <input type="text" name="pwd"/>
+<input type="submit" value="Check"/>
+</form>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+<html>
+<body>
+<h3>Prepare</h3>
+<a href="/listaddr">List Addresses</a>
+<p/>
+
+<b>New Address and grant 'send,receive' permissions:</b>
+<a href="/newacc">New</a> 
+<p/>
+
+<form action="/verifyaddr" method="POST">
+<b>Address</b> <input type="text" name="addr"/>
+<input type="submit" value="Verify"/>
+</form>
+<p/>
+
+<a href="/listperm">List Permissions</a>
+<p/>
+#############################################################################
+<p/>
+<h3>Issue</h3>
+<form action="/issue" method="POST">
+To Address <input type="text" name="addr"/><p/>
+Asset <input type="text" name="asset"/><p/>
+Amount <input type="text" name="amount"/> 
+<input type="submit" value="Issue"/>
+</form>
+<p/><hr>
+
+<h3>Send</h3>
+<form action="/sendfrom" method="POST">
+From <input type="text" name="add1"/><p/>
+To <input type="text" name="add2"/><p/>
+Asset <input type="text" name="asset"/><p/>
+Amount <input type="text" name="amount"/> 
+<input type="submit" value="Send"/>
+</form>
+<p/><hr>
+
+<h3>Check Balance<h3>
+<form action="/addrbal" method="POST">
+Address <input type="text" name="addr"/>
+<input type="submit" value="Check"/>
+</form>
+
+</body>
+</html>

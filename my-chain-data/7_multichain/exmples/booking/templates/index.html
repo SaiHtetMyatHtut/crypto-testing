@@ -1,0 +1,76 @@
+<html>
+<header>
+<title>Booking</title>
+<header>
+<body>
+
+<h1>Preparae</h1>  
+<p/>
+<form action="/prepare" method="POST">
+Ticket <input type="text" name="ticket"/>
+Number of Seats <input type="text" name="numseat"/> <p/>
+Admin Password <input type="text" name="pwd"/>
+<input type="submit" value="Prepare"/>
+</form>
+
+-----------------------------------------------/<p/>
+
+<p/>
+<a href="/getnumseat">Get Number of Seats</a> <p/>
+
+<p/>
+<a href="/listseats">List Seats</a> <p/>
+
+<p/>
+<form action="/getseatstate" method="POST">
+Seat Number <input type="text" name="seat_num"/>
+<input type="submit" value="Get State"/>
+</form>
+
+-----------------------------------------------/<p/>
+
+<p/>
+<form action="/books" method="POST">
+Name <input type="text" name="name"/>
+Seat Number <input type="text" name="seat_num"/>
+<input type="submit" value="Books"/>
+</form>
+
+<p/>
+<form action="/verifybooks" method="POST">
+Name <input type="text" name="name"/>
+Password <input type="text" name="pwd"/>
+<input type="submit" value="Verify Booking"/>
+</form>
+
+<p/>
+<form action="/getseatowner" method="POST">
+Seat Number <input type="text" name="seat_num"/>
+<input type="submit" value="Get Owner"/>
+</form>
+
+-----------------------------------------------/<p/>
+
+<p/>
+<form action="/seats" method="POST">
+Name <input type="text" name="name"/>
+Password <input type="text" name="pwd"/>
+Seat Number <input type="text" name="seat_num"/>
+<input type="submit" value="Seats"/>
+</form>
+
+-----------------------------------------------/<p/>
+
+<p/>
+<form action="/unbooks" method="POST">
+Name <input type="text" name="name"/>
+Password <input type="text" name="pwd"/>
+Seat Number <input type="text" name="seat_num"/>
+<input type="submit" value="UnBooks"/>
+</form>
+
+
+
+
+</body>
+</html>

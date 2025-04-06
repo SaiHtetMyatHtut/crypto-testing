@@ -1,0 +1,100 @@
+## https://www.multichain.com/getting-started/
+## Download: https://www.multichain.com/download-community/
+	multichain-windows-x.y.z.zip
+
+## Unzip to:
+	 C:\mycrypto\etc\MultichainXYZ
+
+## Set PATH.
+set PYTHON_HOME=C:\mycrypto\etc\Python312
+set PYTHON_SC=C:\mycrypto\etc\Python312\Scripts
+  # MC_HOME is where the Multichain is installed.
+  # MC_DIR is where the Blockchain is kept.
+set MC_HOME=C:\mycrypto\etc\Multichain23
+set MC_DIR=C:\Users\<user>\AppData\Roaming\MultiChain
+set PATH=%PYTHON_HOME%;%PYTHON_SC%;%MC_HOME%;.\mybat
+Replace <user> appropriately
+# setp.bat
+
+python -V
+
+## Multichain Daemon:
+multichaind -version
+multichaind -help
+
+#----------------------------------------------
+
+## Multichain Util:
+## Create 'chain1' Blockchain
+multichain-util create chain1
+# create_mc.bat
+
+## Delete MC_DIR:
+rmdir /S /Q %MC_DIR%
+# remove_mc.bat
+
+There are two multichain.conf in MC_DIR (for failback)
+ and MC_DIR\chain1 (for chain1).
+## rpc info:
+'rpcuser' is set to 'multichainrpc' by default.
+'rpcpassword' is randomly set.
+'rpcport' will be randomly set when started.
+
+'rpcpassword' should be fixxed during development.
+There is multichain.conf in working dir for initialization.
+copy C:\mycrypto\src\7_multichain\multichain.conf %MC_DIR%\chain1
+# copy_config.bat
+Check MC_DIR\chain1\multichain.conf should have rpc info.
+
+#------------------------------------------------------
+
+## Create the Blockchain and start 'chain1' deamon.
+start multichaind chain1 -daemon
+# start_mc.bat
+'chain1' is started and the genesis block is created.
+The ip and peer port are shown.
+
+## Stop 'chain1' deamon.
+multichain-cli chain1 stop
+# stop_mc.bat
+
+#----------------------------------------------------
+
+## Multichain Client:
+multichain-cli chain1 <command> <args>
+# mc.bat
+
+## Try:
+mc ping
+mc getinfo
+
+## Help: multichain-cli chain1 help <cmd>
+mc help
+mc help getinfo
+
+## Reset chain1
+# reset_mc.bat
+
+#--------------------------------------------------
+
+https://www.multichain.com/developers/creating-connecting/
+
+## Other nodes may connect at chain1@xxx.yyy.a.bb:PPPP
+## And listening for API requests at port PPP(P-1). (local only)
+
+Check %MC_DIR%\chain1\multichain.conf for rpcuser and rpcpassword
+Connect to 'chain1' from the second node:
+multichaind chain1@xxx.yyy.a.bb:PPPP
+
+The first time connection would fail because of no permission yet.
+The address of the second node is shown. (save as 'add2')
+
+To grant the 'connect' permission:
+multichain-cli chain1 grant %add2% connect
+
+Then try to connect again.
+
+
+
+
+

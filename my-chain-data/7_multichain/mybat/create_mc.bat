@@ -1,0 +1,1 @@
+multichain-util create chain1

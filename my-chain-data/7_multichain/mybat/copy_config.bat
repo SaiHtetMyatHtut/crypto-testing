@@ -1,0 +1,1 @@
+copy C:\mycrypto\7_multichain\multichain.conf %MC_DIR%\chain1

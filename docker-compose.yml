@@ -1,0 +1,23 @@
+services:
+  multichain:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: multichain-node
+    container_name: my-multichain-daemon
+    volumes:
+      - ./my-chain-data:/data
+    ports:
+      - "1234:1234"  # Expose RPC port to host
+    restart: unless-stopped
+    tty: true
+    healthcheck:
+      test: ["CMD", "bash", "-c", "ls /data/.multichain/chain1/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+# Multi-architecture build commands (add to README):
+# docker buildx create --name multiarch-builder --use
+# docker buildx build --platform linux/amd64,linux/arm64 -t username/multichain-node:latest --push . 

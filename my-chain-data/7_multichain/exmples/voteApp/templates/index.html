@@ -1,0 +1,79 @@
+<html>
+<body>
+
+<h3>Preparae</h3>  
+<form action="/prepare" method="POST">
+Admin Password <input type="text" name="pwd"/>
+<input type="submit" value="Prepare"/>
+</form>
+<p/>
+
+<a href="/listvoters">List Eligible Voters</a>
+<p/>
+
+<form action="/verifyvoter" method="POST">
+Name <input type="text" name="name"/>
+<input type="submit" value="Verify Eligible Voter"/>
+</form>
+<p/>
+
+<a href="/listcandidates">List Candidates</a> 
+<p/>
+
+<form action="/verifycandidate" method="POST">
+Name <input type="text" name="name"/>
+<input type="submit" value="Verify Candidate"/>
+</form>
+
+<a href="/liststreams">List Streams</a>
+<p/>
+
+
+--------------------------------------------------------<p/>
+
+<h3>Register</h3>
+<p/>
+<form action="/registervoter" method="POST">
+Name <input type="text" name="name"/>
+<input type="submit" value="Register Voter"/>
+</form>
+<p/>
+
+<a href="/listregisters">List Registered</a>
+<p/>
+
+<form action="/verifyregister" method="POST">
+Name <input type="text" name="name"/>
+Password <input type="text" name="pwd"/>
+<input type="submit" value="Verify Registered"/>
+</form>
+<p/><hr/>
+
+<h3>Vote</h3>
+<form action="/votes" method="POST">
+Name <input type="text" name="name"/>
+Password <input type="text" name="pwd"/>
+To Candidate <input type="text" name="cand"/>
+<input type="submit" value="Votes"/>
+</form>
+<p/>
+
+<a href="/listvoted">List Voted</a>
+<p/>
+
+<form action="/verifyvoted" method="POST">
+Name <input type="text" name="name"/>
+Password <input type="text" name="pwd"/>
+<input type="submit" value="Verify Voted"/>
+</form>
+<p/><hr/>
+
+<h3>Check</h3>
+<a href="/status">Status</a>
+<p/>
+
+<a href="/score">Score</a>
+<p/>
+
+</body>
+</html>

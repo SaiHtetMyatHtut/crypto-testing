@@ -1,0 +1,1 @@
+start multichaind chain1 -daemon
