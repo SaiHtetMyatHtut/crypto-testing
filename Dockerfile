@@ -30,29 +30,13 @@ ARG TARGETARCH
 ARG MULTICHAIN_URL=https://www.multichain.com/download/multichain-${MULTICHAIN_VERSION}.tar.gz
 
 # Handle architecture-specific installation
-RUN if [ "$TARGETARCH" = "arm64" ]; then \
-        echo "ARM64 architecture detected - building from source"; \
-        # Clone the MultiChain repository and build from source for ARM64
-        cd /tmp && \
-        git clone https://github.com/MultiChain/multichain.git && \
-        cd multichain && \
-        # Try master branch directly since v2.3.3 tag doesn't exist
-        git checkout master && \
-        ./autogen.sh && \
-        ./configure && \
-        make -j$(nproc) && \
-        cp src/multichaind src/multichain-cli src/multichain-util /usr/local/bin/ && \
-        chmod +x /usr/local/bin/multichaind /usr/local/bin/multichain-cli /usr/local/bin/multichain-util; \
-    else \
-        echo "x86_64 architecture detected - using pre-compiled binaries"; \
-        # Download pre-compiled binaries for x86_64
-        cd /tmp && \
-        wget -q ${MULTICHAIN_URL} -O multichain.tar.gz && \
-        tar -xvzf multichain.tar.gz && \
-        cd multichain-${MULTICHAIN_VERSION} && \
-        mv multichaind multichain-cli multichain-util /usr/local/bin/ && \
-        chmod +x /usr/local/bin/multichaind /usr/local/bin/multichain-cli /usr/local/bin/multichain-util; \
-    fi && \
+RUN echo "x86_64 architecture detected - using pre-compiled binaries" && \
+    cd /tmp && \
+    wget -q ${MULTICHAIN_URL} -O multichain.tar.gz && \
+    tar -xvzf multichain.tar.gz && \
+    cd multichain-${MULTICHAIN_VERSION} && \
+    mv multichaind multichain-cli multichain-util /usr/local/bin/ && \
+    chmod +x /usr/local/bin/multichaind /usr/local/bin/multichain-cli /usr/local/bin/multichain-util && \
     cd / && \
     rm -rf /tmp/*
 
