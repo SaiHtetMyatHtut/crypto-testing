@@ -16,6 +16,7 @@ RUN apt-get update && \
     git \
     build-essential \
     autoconf \
+    automake \
     libtool \
     pkg-config \
     && rm -rf /var/lib/apt/lists/*
@@ -35,7 +36,8 @@ RUN if [ "$TARGETARCH" = "arm64" ]; then \
         cd /tmp && \
         git clone https://github.com/MultiChain/multichain.git && \
         cd multichain && \
-        git checkout v${MULTICHAIN_VERSION} || git checkout master && \
+        # Try master branch directly since v2.3.3 tag doesn't exist
+        git checkout master && \
         ./autogen.sh && \
         ./configure && \
         make -j$(nproc) && \
